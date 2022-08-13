@@ -1,38 +1,71 @@
-﻿
-#include <iostream>
-#include "math_functions.h"
+﻿#include <iostream>
+#include <cstring>
+
+class Counter
+{
+private:
+    int x = 0;
+public:
+    void increment() { ++x; }
+    void decrement() { --x; }
+    int checkState() { return x; }
+    Counter() { x = 1; }
+    Counter(int x) { this->x = x; }
+
+};
+
+void game(Counter res)
+{
+    char comcom = 0;
+    do
+    {
+
+        std::cout << "Введите команду('+', '-', '=' или 'x') :";
+        std::cin >> comcom;
+        switch (comcom)
+        {
+        case '+': res.increment(); break;
+        case '-': res.decrement(); break;
+        case '=':
+        {
+            std::cout << res.checkState() << std::endl;
+            break;
+        }
+        case 'x': std::cout << "До свидания!"; break;
+        default: std::cout << "Нет такой команды! Еще раз!" << std::endl;
+        }
+
+    } while (comcom != 'x');
+}
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
-
-    int a = 0, b = 0, action = 0, res = 0;
-    std::cout << "Введите первое число: ";
-    std::cin >> a;
-    std::cout << "Введите второе число: ";
-    std::cin >> b;
-    std::cout << "Выберите операцию(1 - сложение, 2 вычитание, 3 - умножение, 4 - деление, 5 - возведение в степень) : ";
-    std::cin >> action;
-    switch (action)
+    int xx = 0;
+    std::string ansans = "";
+    char comcom = 0;
+    do
     {
-    case 1:
-        std::cout << a << " + " << b << " = " << addition(a, b) << std::endl;
-        break;
-    case 2:
-        std::cout << a << " - " << b << " = " << subtraction(a, b) << std::endl;
-        break;
-    case 3:
-        std::cout << a << " * " << b << " = " << multiplication(a, b) << std::endl;
-        break;
-    case 4:
-        std::cout << a << " / " << b << " = " << division(a, b) << std::endl;
-        break;
-    case 5:
-        std::cout << a << " в степени " << b << " = " << exponentiation(a, b) << std::endl;
-        break;
-    default:
-        break;
-    }
+        std::cout << "Вы хотите указать начальное значение счётчика? Введите yes или no: ";
+        std::cin >> ansans;
+        if (ansans == "no")
+        {
+            Counter res;
+            game(res);
 
+        }
+        else if (ansans == "yes")
+        {
+            std::cout << "Введите начальное значение счётчика: ";
+            std::cin >> xx;
+            Counter res(xx);
+            game(res);
+        }
+        else
+        {
+            std::cout << "Неверный ввод. Попробуйте снова!" << std::endl;
+        }
+    } while (ansans != "no" && ansans != "yes");
 
+    return 0;
 }

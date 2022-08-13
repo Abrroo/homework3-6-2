@@ -140,10 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="homework3-6-2.cpp" />
-    <ClCompile Include="math_functions.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="math_functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
