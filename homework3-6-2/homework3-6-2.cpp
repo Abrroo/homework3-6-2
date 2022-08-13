@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <cstring>
-
+#include "Classes.h"
+/*
 class Counter
 {
 private:
@@ -13,7 +14,7 @@ public:
     Counter(int x) { this->x = x; }
 
 };
-
+*/
 void game(Counter res)
 {
     char comcom = 0;
